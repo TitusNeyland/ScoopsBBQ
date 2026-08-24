@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Smoky BBQ atmosphere placeholder">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1210"/>
+      <stop offset="45%" stop-color="#2a1814"/>
+      <stop offset="100%" stop-color="#0c0a09"/>
+    </linearGradient>
+    <radialGradient id="ember" cx="70%" cy="60%" r="45%">
+      <stop offset="0%" stop-color="#c43c1a" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#c43c1a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#g)"/>
+  <ellipse cx="1100" cy="520" rx="420" ry="280" fill="url(#ember)"/>
+  <g opacity="0.25" filter="url(#blur)">
+    <ellipse cx="400" cy="700" rx="300" ry="120" fill="#6b635c"/>
+    <ellipse cx="900" cy="750" rx="400" ry="140" fill="#3f3834"/>
+  </g>
+  <g fill="none" stroke="#f3ebe3" stroke-opacity="0.08" stroke-width="2">
+    <path d="M0 620 C300 540 500 700 800 620 S1200 540 1600 600"/>
+    <path d="M0 680 C280 600 520 760 820 680 S1180 600 1600 670"/>
+  </g>
+</svg>
