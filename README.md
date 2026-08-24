@@ -12,6 +12,27 @@ Orders are pickup-only in v1 with **pay at pickup**. Catering inquiries are stor
 - Catering inquiry form → `cateringInquiries` collection
 - About & Contact pages with Starkville placeholders
 
+## Deploy to GitHub Pages
+
+This site builds as a **static export** and deploys via GitHub Actions.
+
+1. In the repo on GitHub: **Settings → Pages**
+2. Under **Build and deployment → Source**, choose **GitHub Actions** (not “Deploy from a branch”)
+3. Push to `main` (or run the **Deploy to GitHub Pages** workflow manually)
+
+Site URL:
+
+**https://titusneyland.github.io/ScoopsBBQ/**
+
+If Pages was previously set to “Deploy from a branch,” GitHub was serving the README — switching to Actions fixes that.
+
+### Local static preview
+
+```bash
+GITHUB_PAGES=true npm run build
+npx serve out
+```
+
 ## Quick start
 
 ```bash

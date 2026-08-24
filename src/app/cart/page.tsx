@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/components/cart/CartProvider";
 import { formatPrice } from "@/lib/format";
+import { withBasePath } from "@/lib/paths";
 
 export default function CartPage() {
   const { items, subtotal, updateQuantity, removeItem } = useCart();
@@ -34,7 +35,7 @@ export default function CartPage() {
           <li key={item.menuItemId} className="flex gap-4 py-5 sm:items-center">
             <div className="relative h-20 w-20 shrink-0 overflow-hidden bg-charcoal">
               <Image
-                src={item.imageUrl}
+                src={withBasePath(item.imageUrl)}
                 alt=""
                 fill
                 className="object-cover"

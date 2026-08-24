@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { withBasePath } from "@/lib/paths";
 
 type BrandLogoProps = {
   size?: "sm" | "md" | "lg" | "hero";
@@ -30,7 +31,7 @@ export function BrandLogo({
 
   return (
     <Image
-      src="/logo.png"
+      src={withBasePath("/logo.png")}
       alt="Scoop's BBQ & Catering"
       width={dims.width}
       height={dims.height}

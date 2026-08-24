@@ -3,6 +3,7 @@ import { Oswald, Source_Serif_4, Special_Elite } from "next/font/google";
 import { CartProvider } from "@/components/cart/CartProvider";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { withBasePath } from "@/lib/paths";
 import "./globals.css";
 
 const display = Oswald({
@@ -31,8 +32,8 @@ export const metadata: Metadata = {
   description:
     "Scoop's BBQ & Catering in Starkville, MS — plates, by the pound, fresh off the grill, and catering. Call or text 662-694-0933.",
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: withBasePath("/logo.png"),
+    apple: withBasePath("/logo.png"),
   },
 };
 

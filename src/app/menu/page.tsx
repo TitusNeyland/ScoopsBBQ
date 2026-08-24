@@ -10,8 +10,6 @@ import {
   type MenuCategory,
 } from "@/lib/types";
 
-export const dynamic = "force-dynamic";
-
 export const metadata: Metadata = {
   title: "Menu",
   description:

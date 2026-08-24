@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { BrandLogo } from "@/components/BrandLogo";
+import { withBasePath } from "@/lib/paths";
 
 export default function HomePage() {
   return (
     <section className="relative min-h-[calc(100vh-4rem)] overflow-hidden">
       <div
         className="animate-hero absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url(/hero.svg)" }}
+        style={{ backgroundImage: `url(${withBasePath("/hero.svg")})` }}
         aria-hidden
       />
       <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/65 to-ink" />

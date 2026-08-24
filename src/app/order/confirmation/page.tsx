@@ -1,19 +1,15 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export const metadata: Metadata = {
-  title: "Order confirmed",
-};
-
-export default async function OrderConfirmationPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ id?: string }>;
-}) {
-  const { id } = await searchParams;
+function ConfirmationContent() {
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <>
       <p className="text-xs uppercase tracking-[0.18em] text-ember">Thank you</p>
       <h1 className="mt-2 font-display text-4xl tracking-wide text-cream sm:text-5xl">
         Order received
@@ -41,6 +37,16 @@ export default async function OrderConfirmationPage({
           Home
         </Link>
       </div>
+    </>
+  );
+}
+
+export default function OrderConfirmationPage() {
+  return (
+    <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <Suspense fallback={<p className="text-cream/70">Loading…</p>}>
+        <ConfirmationContent />
+      </Suspense>
     </div>
   );
 }
