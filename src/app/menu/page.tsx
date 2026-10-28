@@ -4,11 +4,13 @@ import { QuoteCta } from "@/components/QuoteCta";
 import { ButtonLink, PageHeader, SectionHeading } from "@/components/ui";
 import { MenuItemRow } from "@/components/menu/MenuItemRow";
 import { getMenuItems } from "@/lib/menu";
+import { SIDES } from "@/lib/menu-data";
 import { PACKAGES } from "@/lib/site";
 import {
   BUSINESS_PHONE,
   BUSINESS_PHONE_TEL,
   CATEGORY_LABELS,
+  CATEGORY_NOTES,
   CATEGORY_ORDER,
 } from "@/lib/types";
 
@@ -121,6 +123,11 @@ export default async function MenuPage() {
                 <h3 className="font-display text-lg uppercase tracking-[0.2em] text-gold">
                   {CATEGORY_LABELS[category]}
                 </h3>
+                {CATEGORY_NOTES[category] && (
+                  <p className="mt-1 text-sm text-cream/55">
+                    {CATEGORY_NOTES[category]}
+                  </p>
+                )}
                 <div className="mt-3 border-t border-gold/40">
                   {groupItems.map((item) => (
                     <MenuItemRow key={item.id} item={item} />
@@ -128,6 +135,21 @@ export default async function MenuPage() {
                 </div>
               </div>
             ))}
+            <div>
+              <h3 className="font-display text-lg uppercase tracking-[0.2em] text-gold">
+                Sides
+              </h3>
+              <ul className="mt-3 grid grid-cols-2 border-t border-gold/40">
+                {SIDES.map((side) => (
+                  <li
+                    key={side}
+                    className="border-b border-gold/15 py-3 font-display text-sm uppercase tracking-[0.08em] text-cream sm:text-base"
+                  >
+                    {side}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>

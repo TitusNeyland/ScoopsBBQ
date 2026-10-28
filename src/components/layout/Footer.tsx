@@ -1,6 +1,14 @@
 import Link from "next/link";
 import { BrandLogo } from "@/components/BrandLogo";
-import { BUSINESS_EMAIL, CITY, ESTABLISHED, NAV, SERVICE_AREAS } from "@/lib/site";
+import {
+  BUSINESS_EMAIL,
+  CITY,
+  ESTABLISHED,
+  INSTAGRAM_HANDLE,
+  INSTAGRAM_URL,
+  NAV,
+  SERVICE_AREAS,
+} from "@/lib/site";
 import { BUSINESS_PHONE_DISPLAY, BUSINESS_PHONE_TEL } from "@/lib/types";
 
 export function Footer() {
@@ -39,6 +47,16 @@ export function Footer() {
             <li>
               <a href={`mailto:${BUSINESS_EMAIL}`} className="hover:text-gold">
                 {BUSINESS_EMAIL}
+              </a>
+            </li>
+            <li>
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gold"
+              >
+                Instagram · @{INSTAGRAM_HANDLE}
               </a>
             </li>
             <li>{CITY}</li>

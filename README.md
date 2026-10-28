@@ -7,7 +7,7 @@ Quote requests are stored in Firestore (`cateringInquiries`) for follow-up.
 ## Pages
 
 - **Home** — hero, intro, featured services, packages, work gallery, reviews, quote CTA
-- **Catering Services** (`/catering`) — corporate, weddings, university, church, private parties, VIP hospitality
+- **Catering Services** (`/catering`) — corporate, weddings, university, church
 - **Menus & Packages** (`/menu`) — catering packages plus the everyday plates / by-the-pound menu
 - **Our Work** (`/our-work`) — Bulldog Bash, university events, catering jobs
 - **About** (`/about`)

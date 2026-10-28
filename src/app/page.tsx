@@ -3,21 +3,35 @@ import { Photo } from "@/components/Photo";
 import { QuoteCta } from "@/components/QuoteCta";
 import { Testimonials } from "@/components/Testimonials";
 import { ButtonLink, Eyebrow, SectionHeading } from "@/components/ui";
-import { CITY, ESTABLISHED, PACKAGES, SERVICES, TAGLINE, WORK } from "@/lib/site";
+import {
+  CITY,
+  ESTABLISHED,
+  PACKAGES,
+  photosFirst,
+  SERVICES,
+  TAGLINE,
+  WORK,
+} from "@/lib/site";
 
 const FEATURED_SERVICES = ["weddings", "corporate", "university"];
 
 export default function HomePage() {
   const featured = SERVICES.filter((s) => FEATURED_SERVICES.includes(s.slug));
+  const workPreview = photosFirst(WORK).slice(0, 6);
 
   return (
     <>
       {/* Hero */}
       <section className="relative flex min-h-[calc(100svh-4.5rem)] items-end overflow-hidden">
         <div className="animate-hero absolute inset-0">
-          <Photo alt="BBQ spread at an outdoor evening event" eager />
+          <Photo
+            src="/photos/chicken-kabobs-pit.jpg"
+            alt="Chicken kabobs grilling over the fire"
+            eager
+          />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/30 to-transparent" />
 
         <div className="relative mx-auto w-full max-w-6xl px-4 pb-16 pt-32 sm:px-6 sm:pb-24">
           <div className="animate-fade-up">
@@ -73,10 +87,18 @@ export default function HomePage() {
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="relative aspect-[3/4] border border-gold/15">
-            <Photo alt="Pitmaster at the smoker" sizes="(min-width: 1024px) 25vw, 50vw" />
+            <Photo
+              src="/photos/corporate-buffet.jpg"
+              alt="Buffet set for a corporate lunch"
+              sizes="(min-width: 1024px) 25vw, 50vw"
+            />
           </div>
           <div className="relative mt-10 aspect-[3/4] border border-gold/15">
-            <Photo alt="Sliced brisket close-up" sizes="(min-width: 1024px) 25vw, 50vw" />
+            <Photo
+              src="/photos/chicken-kabobs-pan.jpg"
+              alt="Tray of grilled chicken kabobs"
+              sizes="(min-width: 1024px) 25vw, 50vw"
+            />
           </div>
         </div>
       </section>
@@ -123,8 +145,8 @@ export default function HomePage() {
             ))}
           </div>
           <p className="mt-8 text-sm text-cream/55">
-            Also serving church functions, private parties, and VIP
-            hospitality.
+            Also serving church functions, from fellowship dinners to
+            homecomings.
           </p>
         </div>
       </section>
@@ -176,7 +198,7 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-3">
-            {WORK.slice(0, 6).map((item, i) => (
+            {workPreview.map((item, i) => (
               <div
                 key={item.title}
                 className={`relative border border-gold/10 ${

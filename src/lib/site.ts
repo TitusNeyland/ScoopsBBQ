@@ -8,6 +8,8 @@ export const CITY = "Starkville, Mississippi";
 export const TAGLINE = "Where Southern Flavor Meets Exceptional Hospitality.";
 
 export const BUSINESS_EMAIL = "hello@scoopsbbq.example"; // placeholder
+export const INSTAGRAM_HANDLE = "scoopsbbq";
+export const INSTAGRAM_URL = `https://www.instagram.com/${INSTAGRAM_HANDLE}/`;
 
 export const NAV = [
   { href: "/catering", label: "Catering Services" },
@@ -31,6 +33,7 @@ export const SERVICES: Service[] = [
     slug: "corporate",
     title: "Corporate Events",
     blurb: "Lunches, meetings, and company gatherings served on schedule.",
+    photo: "/photos/corporate-events.jpg",
     details:
       "From boxed lunches for a morning meeting to a full buffet for the whole company, we show up on time, set up clean, and keep the line moving so your team can get back to business.",
   },
@@ -38,6 +41,7 @@ export const SERVICES: Service[] = [
     slug: "weddings",
     title: "Weddings",
     blurb: "Rehearsal dinners, receptions, and everything in between.",
+    photo: "/photos/garden-reception-buffet.jpg",
     details:
       "Southern hospitality for the biggest day of the year. We work with you and your venue on menu, service style, and timing so your guests remember the food as much as the first dance.",
   },
@@ -45,6 +49,7 @@ export const SERVICES: Service[] = [
     slug: "university",
     title: "University Events",
     blurb: "Tailgates, Bulldog Bash, department functions, and Greek life.",
+    photo: "/photos/whole-roasted-pig.jpg",
     details:
       "Starkville is our home. We've fed game-day crowds, campus celebrations, and student organizations, and we know how to serve a big crowd fast without cutting corners.",
   },
@@ -52,22 +57,9 @@ export const SERVICES: Service[] = [
     slug: "church",
     title: "Church Functions",
     blurb: "Fellowship dinners, homecomings, and family-style gatherings.",
+    photo: "/photos/banana-pudding-peach-cobbler.jpg",
     details:
       "Generous portions and comfort food that brings people to the table. Ask about family-style service for fellowship halls and outdoor homecomings.",
-  },
-  {
-    slug: "private",
-    title: "Private Parties",
-    blurb: "Birthdays, reunions, graduations, and backyard cookouts.",
-    details:
-      "Whether it's twenty guests in the backyard or two hundred at a family reunion, we bring the smoke and handle the details so you can enjoy the party.",
-  },
-  {
-    slug: "vip",
-    title: "VIP Hospitality",
-    blurb: "Elevated service for suites, sponsors, and special guests.",
-    details:
-      "Premium selections, polished presentation, and attentive staff for hospitality suites, sponsor tents, and high-profile guests.",
   },
 ];
 
@@ -79,27 +71,29 @@ export interface Package {
   photo?: string;
 }
 
-// Placeholder package contents; confirm items with the client.
+// Package food items come from the real menu; service details are placeholders.
 export const PACKAGES: Package[] = [
   {
     slug: "bbq-buffet",
     title: "BBQ Buffets",
     blurb: "Our signature smoked meats with classic sides, served buffet style.",
+    photo: "/photos/corporate-buffet.jpg",
     highlights: [
       "Pulled pork, smoked turkey, or pulled chicken",
       "Rib tips and smoked sausage",
-      "Choice of two or three Southern sides",
-      "Rolls, sauces, and full buffet setup",
+      "Baked beans, mac and cheese, and potato salad",
+      "Sauces and full buffet setup",
     ],
   },
   {
     slug: "hors-doeuvres",
     title: "Heavy Hors d'Oeuvres",
     blurb: "Passed or stationed bites for receptions and mixers.",
+    photo: "/photos/spinach-dip.jpg",
     highlights: [
-      "Smoked wings and BBQ sliders",
-      "Pulled pork bites and sausage boards",
-      "Seasonal Southern small plates",
+      "Grilled chicken kabobs",
+      "Spinach dip with tortilla chips",
+      "Smoked chicken wings and rib tips",
       "Stationed or passed service",
     ],
   },
@@ -107,21 +101,23 @@ export const PACKAGES: Package[] = [
     slug: "southern-comfort",
     title: "Southern Comfort Food",
     blurb: "Family-style favorites that feel like Sunday dinner.",
+    photo: "/photos/banana-pudding-peach-cobbler.jpg",
     highlights: [
       "Chicken quarters and halves off the grill",
-      "Homestyle sides and vegetables",
-      "Cornbread and rolls",
-      "Family-style or buffet service",
+      "Pulled pork and smoked turkey",
+      "Mac and cheese, baked beans, and potato salad",
+      "Banana pudding and peach cobbler",
     ],
   },
   {
     slug: "premium",
     title: "Premium Selections",
     blurb: "Elevated cuts and presentation for upscale events.",
+    photo: "/photos/garden-reception-buffet.jpg",
     highlights: [
-      "Loin back ribs and market-price cuts",
-      "Carving stations",
-      "Upgraded sides and plated options",
+      "Full slabs of loin back ribs",
+      "Smoked turkey and pulled pork",
+      "Plated or buffet presentation",
       "Uniformed service staff",
     ],
   },
@@ -129,6 +125,7 @@ export const PACKAGES: Package[] = [
     slug: "custom",
     title: "Custom Menus",
     blurb: "Build a menu around your event, guests, and budget.",
+    photo: "/photos/chicken-kabobs-pan.jpg",
     highlights: [
       "Work directly with Scoop's on every item",
       "Dietary needs and kid-friendly options",
@@ -148,14 +145,51 @@ export interface WorkItem {
 export const WORK: WorkItem[] = [
   { title: "Bulldog Bash serving line", category: "Bulldog Bash" },
   { title: "Bulldog Bash crowd", category: "Bulldog Bash" },
+  {
+    title: "Whole roasted pig for Delta Sigma Theta",
+    category: "University Events",
+    photo: "/photos/whole-roasted-pig.jpg",
+  },
   { title: "Campus department lunch", category: "University Events" },
   { title: "Tailgate spread", category: "University Events" },
-  { title: "Wedding reception buffet", category: "Catering Jobs" },
-  { title: "Corporate lunch setup", category: "Catering Jobs" },
-  { title: "Brisket and ribs platter", category: "Catering Jobs" },
+  {
+    title: "Tented garden reception buffet",
+    category: "Catering Jobs",
+    photo: "/photos/garden-reception-buffet.jpg",
+  },
+  {
+    title: "Banana pudding and peach cobbler",
+    category: "Catering Jobs",
+    photo: "/photos/banana-pudding-peach-cobbler.jpg",
+  },
+  {
+    title: "Corporate lunch buffet",
+    category: "Catering Jobs",
+    photo: "/photos/corporate-buffet.jpg",
+  },
+  {
+    title: "Chicken kabobs on the pit",
+    category: "Catering Jobs",
+    photo: "/photos/chicken-kabobs-pit.jpg",
+  },
+  {
+    title: "Grilled chicken kabobs",
+    category: "Catering Jobs",
+    photo: "/photos/chicken-kabobs-pan.jpg",
+  },
+  {
+    title: "Spinach dip and chips",
+    category: "Catering Jobs",
+    photo: "/photos/spinach-dip.jpg",
+  },
+  { title: "Ribs and rib tips platter", category: "Catering Jobs" },
   { title: "Graduation party", category: "Catering Jobs" },
-  { title: "Pit at sunset", category: "Catering Jobs" },
 ];
+
+/** Real photos before placeholders, otherwise keeping the original order. */
+export function photosFirst<T extends { photo?: string }>(items: T[]): T[] {
+  return [...items].sort((a, b) => Number(Boolean(b.photo)) - Number(Boolean(a.photo)));
+}
 
 export interface Testimonial {
   quote: string;
@@ -184,7 +218,7 @@ export const TESTIMONIALS: Testimonial[] = [
     quote:
       "Easy to book, showed up early, and the pulled pork disappeared in minutes. We'll be calling Scoop's again.",
     name: "Client name",
-    event: "Private party",
+    event: "Church homecoming",
     placeholder: true,
   },
 ];

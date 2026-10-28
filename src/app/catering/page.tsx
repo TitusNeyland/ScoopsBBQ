@@ -7,7 +7,7 @@ import { SERVICES } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Catering Services",
   description:
-    "Catering for corporate events, weddings, university events, church functions, private parties, and VIP hospitality in Starkville, MS.",
+    "Catering for corporate events, weddings, university events, and church functions in Starkville, MS.",
 };
 
 const STEPS = [

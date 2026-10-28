@@ -37,7 +37,12 @@ export default function AboutPage() {
 
       <section className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1fr_1.1fr] lg:items-center">
         <div className="relative aspect-[4/5] border border-gold/15">
-          <Photo alt="Scoop's owner at the pit" sizes="(min-width: 1024px) 45vw, 100vw" />
+          <Photo
+            src="/photos/owner-portrait.jpg"
+            alt="Owner of Scoop's BBQ & Catering"
+            sizes="(min-width: 1024px) 45vw, 100vw"
+            className="object-top"
+          />
         </div>
         <div>
           <SectionHeading eyebrow="Our story" title="Southern hospitality, one plate at a time" />

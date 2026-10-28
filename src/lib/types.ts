@@ -42,6 +42,10 @@ export const CATEGORY_LABELS: Record<MenuCategory, string> = {
   by_the_market: "By the Market",
 };
 
+export const CATEGORY_NOTES: Partial<Record<MenuCategory, string>> = {
+  plates: "All plates include a can soda.",
+};
+
 export const CATEGORY_ORDER: MenuCategory[] = [
   "plates",
   "by_the_pound",

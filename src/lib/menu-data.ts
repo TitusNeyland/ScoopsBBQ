@@ -1,11 +1,11 @@
 import type { MenuItem } from "./types";
 
-/** Official Scoop's BBQ menu (from flyer). Used when Firebase is empty. */
+/** Official Scoop's BBQ menu (from flyers). Used when Firebase is empty. */
 export const LOCAL_MENU: MenuItem[] = [
   {
     id: "plate-chicken-club",
     name: "Chicken Club Sandwich Plate",
-    description: "Chicken club sandwich plate.",
+    description: "Chicken Club Sandwich Plate.",
     price: 10.0,
     category: "plates",
     imageUrl: "/menu/chicken.svg",
@@ -13,34 +13,54 @@ export const LOCAL_MENU: MenuItem[] = [
     sortOrder: 1,
   },
   {
-    id: "plate-cheeseburger",
-    name: "Cheeseburger Plate",
-    description: "Cheeseburger plate.",
-    price: 10.0,
+    id: "plate-rib-tips",
+    name: "Rib Tips Plate",
+    description: "Rib Tips Plate.",
+    price: 13.0,
     category: "plates",
-    imageUrl: "/menu/burger.svg",
+    imageUrl: "/menu/ribs.svg",
     available: true,
     sortOrder: 2,
   },
   {
-    id: "plate-rib-tips",
-    name: "Rib Tips Plate",
-    description: "Rib tips plate.",
-    price: 13.0,
+    id: "plate-ribs",
+    name: "Ribs Plate",
+    description: "Ribs Plate.",
+    price: 15.0,
     category: "plates",
     imageUrl: "/menu/ribs.svg",
     available: true,
     sortOrder: 3,
   },
   {
-    id: "plate-ribs",
-    name: "Ribs Plate",
-    description: "Ribs plate.",
-    price: 15.0,
+    id: "plate-6pc-wings-fries",
+    name: "6 Pc Wings and Fries",
+    description: "6 Pc Wings and Fries.",
+    price: 7.0,
     category: "plates",
-    imageUrl: "/menu/ribs.svg",
+    imageUrl: "/menu/chicken.svg",
     available: true,
     sortOrder: 4,
+  },
+  {
+    id: "plate-12pc-wings-fries",
+    name: "12 Pc Wings and Fries",
+    description: "12 Pc Wings and Fries.",
+    price: 12.0,
+    category: "plates",
+    imageUrl: "/menu/chicken.svg",
+    available: true,
+    sortOrder: 5,
+  },
+  {
+    id: "plate-12pc-wing-plate",
+    name: "12 Pc Wing Plate",
+    description: "12 Pc Wing Plate.",
+    price: 13.0,
+    category: "plates",
+    imageUrl: "/menu/chicken.svg",
+    available: true,
+    sortOrder: 6,
   },
   {
     id: "pound-rib-tips",
@@ -138,3 +158,6 @@ export const LOCAL_MENU: MenuItem[] = [
     sortOrder: 2,
   },
 ];
+
+/** Sides offered with plates (no individual price on the flyer). */
+export const SIDES = ["Baked Beans", "Mac and Cheese", "Fries", "Potato Salad"];

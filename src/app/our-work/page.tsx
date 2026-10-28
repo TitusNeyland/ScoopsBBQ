@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Photo } from "@/components/Photo";
 import { QuoteCta } from "@/components/QuoteCta";
 import { PageHeader } from "@/components/ui";
-import { WORK, type WorkItem } from "@/lib/site";
+import { photosFirst, WORK, type WorkItem } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Our Work",
@@ -36,7 +36,7 @@ export default function OurWorkPage() {
 
       <div className="mx-auto max-w-6xl space-y-20 px-4 py-20 sm:px-6">
         {GROUPS.map(({ category, intro }) => {
-          const items = WORK.filter((w) => w.category === category);
+          const items = photosFirst(WORK.filter((w) => w.category === category));
           if (items.length === 0) return null;
 
           return (

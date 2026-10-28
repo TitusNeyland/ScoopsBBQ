@@ -58,7 +58,7 @@ async function main() {
       available: item.available,
       sortOrder: item.sortOrder,
     };
-    const ref = db.collection("menuItems").doc();
+    const ref = db.collection("menuItems").doc(item.id);
     batch.set(ref, data);
   }
 

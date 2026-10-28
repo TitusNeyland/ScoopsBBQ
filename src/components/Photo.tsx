@@ -23,14 +23,17 @@ export function Photo({
 }: PhotoProps) {
   if (src) {
     return (
-      <Image
-        src={withBasePath(src)}
-        alt={alt}
-        fill
-        sizes={sizes}
-        loading={eager ? "eager" : "lazy"}
-        className={`object-cover ${className}`.trim()}
-      />
+      <>
+        <div className="photo-placeholder absolute inset-0" aria-hidden />
+        <Image
+          src={withBasePath(src)}
+          alt={alt}
+          fill
+          sizes={sizes}
+          loading={eager ? "eager" : "lazy"}
+          className={`object-cover ${className}`.trim()}
+        />
+      </>
     );
   }
 

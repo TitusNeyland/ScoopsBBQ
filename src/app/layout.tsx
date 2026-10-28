@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | Scoop's BBQ & Catering",
   },
   description:
-    "Scoop's BBQ & Catering: Southern flavor and exceptional hospitality for weddings, corporate events, university events, and private parties in Starkville, MS.",
+    "Scoop's BBQ & Catering: Southern flavor and exceptional hospitality for weddings, corporate events, university events, and church functions in Starkville, MS.",
 };
 
 export default function RootLayout({
