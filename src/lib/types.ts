@@ -19,46 +19,17 @@ export interface MenuItem {
   sortOrder: number;
 }
 
-export interface CartItem {
-  menuItemId: string;
-  name: string;
-  price: number;
-  quantity: number;
-  imageUrl: string;
-}
-
-export interface OrderCustomer {
-  name: string;
-  phone: string;
-  email: string;
-}
-
-export interface OrderItem {
-  menuItemId: string;
-  name: string;
-  price: number;
-  quantity: number;
-}
-
-export interface Order {
-  id?: string;
-  items: OrderItem[];
-  customer: OrderCustomer;
-  notes: string;
-  fulfillment: "pickup";
-  paymentStatus: "pay_at_pickup";
-  status: "new";
-  total: number;
-  createdAt?: unknown;
-}
-
 export interface CateringInquiry {
   id?: string;
   name: string;
   phone: string;
   email: string;
   eventDate: string;
+  location: string;
   guestCount: number;
+  budget: string;
+  serviceType: string;
+  menuPreferences: string[];
   message: string;
   status: "new";
   createdAt?: unknown;

@@ -1,44 +1,208 @@
 import Link from "next/link";
-import { BrandLogo } from "@/components/BrandLogo";
-import { withBasePath } from "@/lib/paths";
+import { Photo } from "@/components/Photo";
+import { QuoteCta } from "@/components/QuoteCta";
+import { Testimonials } from "@/components/Testimonials";
+import { ButtonLink, Eyebrow, SectionHeading } from "@/components/ui";
+import { CITY, ESTABLISHED, PACKAGES, SERVICES, TAGLINE, WORK } from "@/lib/site";
+
+const FEATURED_SERVICES = ["weddings", "corporate", "university"];
 
 export default function HomePage() {
-  return (
-    <section className="relative min-h-[calc(100vh-4rem)] overflow-hidden">
-      <div
-        className="animate-hero absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${withBasePath("/hero.svg")})` }}
-        aria-hidden
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/65 to-ink" />
+  const featured = SERVICES.filter((s) => FEATURED_SERVICES.includes(s.slug));
 
-      <div className="relative mx-auto flex min-h-[calc(100vh-4rem)] max-w-6xl flex-col justify-center px-4 py-16 sm:px-6 sm:py-20 md:justify-end md:pb-24 md:pt-28">
-        <div className="animate-fade-up drop-shadow-[0_12px_28px_rgba(0,0,0,0.6)]">
-          <BrandLogo size="hero" priority />
+  return (
+    <>
+      {/* Hero */}
+      <section className="relative flex min-h-[calc(100svh-4.5rem)] items-end overflow-hidden">
+        <div className="animate-hero absolute inset-0">
+          <Photo alt="BBQ spread at an outdoor evening event" eager />
         </div>
-        <h1 className="sr-only">Scoop&apos;s BBQ &amp; Catering</h1>
-        <p className="animate-fade-up-delay mt-5 max-w-xl font-display text-2xl uppercase tracking-[0.08em] text-ember sm:text-3xl">
-          Smoke, fire, and good plates
-        </p>
-        <p className="animate-fade-up-delay mt-3 max-w-md text-base leading-relaxed text-cream/80 sm:text-lg">
-          Plates, by the pound, and fresh off the grill — Scoop&apos;s BBQ &amp;
-          Catering, serving Starkville. Call or text 662-694-0933.
-        </p>
-        <div className="animate-fade-up-delay mt-8 flex flex-wrap gap-3">
-          <Link
-            href="/menu"
-            className="bg-ember px-6 py-3 font-display text-sm uppercase tracking-[0.14em] text-cream transition-colors hover:bg-ember-hot"
-          >
-            Order now
-          </Link>
-          <Link
-            href="/catering"
-            className="border border-cream/40 px-6 py-3 font-display text-sm uppercase tracking-[0.14em] text-cream transition-colors hover:border-cream hover:bg-cream/10"
-          >
-            Book catering
-          </Link>
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/20" />
+
+        <div className="relative mx-auto w-full max-w-6xl px-4 pb-16 pt-32 sm:px-6 sm:pb-24">
+          <div className="animate-fade-up">
+            <Eyebrow>
+              Est. {ESTABLISHED} · {CITY}
+            </Eyebrow>
+            <h1 className="mt-4 max-w-4xl font-display text-5xl uppercase leading-[0.95] tracking-wide text-cream sm:text-7xl lg:text-8xl">
+              Scoop&apos;s BBQ
+              <span className="block text-gold">&amp; Catering</span>
+            </h1>
+          </div>
+          <p className="animate-fade-up-delay mt-6 max-w-xl text-lg leading-relaxed text-cream/85 sm:text-2xl">
+            {TAGLINE}
+          </p>
+          <div className="animate-fade-up-delay mt-9 flex flex-wrap gap-3">
+            <ButtonLink href="/quote">Request a Quote</ButtonLink>
+            <ButtonLink href="/menu" variant="outline">
+              Explore Our Menus
+            </ButtonLink>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Intro */}
+      <section className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-2 lg:items-center">
+        <div>
+          <SectionHeading
+            eyebrow="It's about the experience"
+            title="Smoked low and slow. Served with Southern hospitality."
+          />
+          <div className="mt-6 space-y-4 text-base leading-relaxed text-cream/70 sm:text-lg">
+            <p>
+              Since {ESTABLISHED}, Scoop&apos;s has been feeding Starkville, from
+              Bulldog Bash crowds to wedding receptions and corporate lunches.
+              Every event gets the same care: real smoke, generous portions,
+              and a team that treats your guests like family.
+            </p>
+          </div>
+          <div className="mt-8 flex flex-wrap gap-6">
+            <Link
+              href="/about"
+              className="font-display text-sm uppercase tracking-[0.18em] text-gold hover:text-gold-hot"
+            >
+              Our story →
+            </Link>
+            <Link
+              href="/our-work"
+              className="font-display text-sm uppercase tracking-[0.18em] text-gold hover:text-gold-hot"
+            >
+              See our work →
+            </Link>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="relative aspect-[3/4] border border-gold/15">
+            <Photo alt="Pitmaster at the smoker" sizes="(min-width: 1024px) 25vw, 50vw" />
+          </div>
+          <div className="relative mt-10 aspect-[3/4] border border-gold/15">
+            <Photo alt="Sliced brisket close-up" sizes="(min-width: 1024px) 25vw, 50vw" />
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="border-t border-gold/10 bg-charcoal">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <SectionHeading
+              eyebrow="Catering services"
+              title="Exceptional catering for every occasion"
+            />
+            <Link
+              href="/catering"
+              className="shrink-0 font-display text-sm uppercase tracking-[0.18em] text-gold hover:text-gold-hot"
+            >
+              All services →
+            </Link>
+          </div>
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {featured.map((service) => (
+              <Link
+                key={service.slug}
+                href={`/catering#${service.slug}`}
+                className="card-lift group block border border-gold/15 bg-ink"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Photo
+                    src={service.photo}
+                    alt={service.title}
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-display text-xl uppercase tracking-[0.1em] text-cream">
+                    {service.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-cream/65">
+                    {service.blurb}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <p className="mt-8 text-sm text-cream/55">
+            Also serving church functions, private parties, and VIP
+            hospitality.
+          </p>
+        </div>
+      </section>
+
+      {/* Menus */}
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+        <SectionHeading
+          eyebrow="Menus & packages"
+          title="From BBQ buffets to premium spreads"
+          intro="Start with a package or build your own. Every menu can be tailored to your guest count and budget."
+          align="center"
+        />
+        <div className="mt-12 grid gap-px border border-gold/15 bg-gold/15 sm:grid-cols-2 lg:grid-cols-5">
+          {PACKAGES.map((pkg) => (
+            <Link
+              key={pkg.slug}
+              href={`/menu#${pkg.slug}`}
+              className="group flex flex-col bg-ink p-6 transition-colors hover:bg-coal"
+            >
+              <h3 className="font-display text-lg uppercase tracking-[0.1em] text-cream group-hover:text-gold">
+                {pkg.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-cream/60">
+                {pkg.blurb}
+              </p>
+            </Link>
+          ))}
+        </div>
+        <div className="mt-10 text-center">
+          <ButtonLink href="/menu" variant="outline">
+            Explore Our Menus
+          </ButtonLink>
+        </div>
+      </section>
+
+      {/* Our work */}
+      <section className="border-t border-gold/10 bg-charcoal">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <SectionHeading
+              eyebrow="Our work"
+              title="Bulldog Bash, campus events, and more"
+            />
+            <Link
+              href="/our-work"
+              className="shrink-0 font-display text-sm uppercase tracking-[0.18em] text-gold hover:text-gold-hot"
+            >
+              View gallery →
+            </Link>
+          </div>
+          <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-3">
+            {WORK.slice(0, 6).map((item, i) => (
+              <div
+                key={item.title}
+                className={`relative border border-gold/10 ${
+                  i === 0 ? "col-span-2 row-span-2 aspect-square md:aspect-auto" : "aspect-square"
+                }`}
+              >
+                <Photo src={item.photo} alt={item.title} sizes="(min-width: 768px) 33vw, 50vw" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Reviews */}
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+        <SectionHeading
+          eyebrow="Kind words"
+          title="What our clients say"
+          align="center"
+        />
+        <div className="mt-12">
+          <Testimonials />
+        </div>
+      </section>
+
+      <QuoteCta />
+    </>
   );
 }

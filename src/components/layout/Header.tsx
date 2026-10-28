@@ -4,18 +4,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
-import { useCart } from "@/components/cart/CartProvider";
+import { buttonClass } from "@/components/ui";
+import { NAV } from "@/lib/site";
 
-const NAV = [
-  { href: "/menu", label: "Menu" },
-  { href: "/catering", label: "Catering" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
+function normalize(path: string) {
+  return path.replace(/\/$/, "") || "/";
+}
 
 export function Header() {
-  const pathname = usePathname();
-  const { itemCount } = useCart();
+  const pathname = normalize(usePathname());
   const [open, setOpen] = useState(false);
   const [navPath, setNavPath] = useState(pathname);
 
@@ -25,69 +22,52 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-smoke/30 bg-charcoal/90 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+    <header className="sticky top-0 z-50 border-b border-gold/15 bg-ink/90 backdrop-blur-md">
+      <div className="mx-auto flex h-18 max-w-6xl items-center justify-between gap-6 px-4 sm:px-6">
         <Link
           href="/"
-          className="flex items-center gap-2.5 transition-opacity hover:opacity-90"
-          aria-label="Scoop's BBQ home"
+          className="flex items-center gap-3 transition-opacity hover:opacity-90"
+          aria-label="Scoop's BBQ & Catering home"
         >
-          <BrandLogo size="sm" priority />
-          <span className="font-display text-xl tracking-wide text-cream sm:text-2xl">
-            Scoop&apos;s BBQ
+          <BrandLogo size="sm" eager />
+          <span className="font-display text-lg uppercase leading-tight tracking-[0.12em] text-cream">
+            Scoop&apos;s
+            <span className="block text-[10px] tracking-[0.3em] text-gold">
+              BBQ &amp; Catering
+            </span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-7 lg:flex">
           {NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`text-sm uppercase tracking-[0.12em] transition-colors ${
+              className={`font-display text-xs uppercase tracking-[0.18em] transition-colors ${
                 pathname === item.href
-                  ? "text-ember"
+                  ? "text-gold"
                   : "text-cream/75 hover:text-cream"
               }`}
             >
               {item.label}
             </Link>
           ))}
-          <Link
-            href="/cart"
-            className="relative rounded border border-ember/60 px-3 py-1.5 text-sm uppercase tracking-[0.12em] text-cream transition-colors hover:border-ember hover:bg-ember/15"
-          >
-            Cart
-            {itemCount > 0 && (
-              <span
-                key={itemCount}
-                className="absolute -right-2 -top-2 flex h-5 min-w-5 animate-cart-pop items-center justify-center rounded-full bg-ember px-1 text-xs font-semibold text-cream"
-              >
-                {itemCount}
-              </span>
-            )}
+          <Link href="/quote" className={`${buttonClass()} px-5 py-2.5 text-xs`}>
+            Request a Quote
           </Link>
         </nav>
 
-        <div className="flex items-center gap-3 md:hidden">
+        <div className="flex items-center gap-4 lg:hidden">
           <Link
-            href="/cart"
-            className="relative rounded border border-ember/60 px-2.5 py-1 text-xs uppercase tracking-[0.12em] text-cream"
+            href="/quote"
+            className={`${buttonClass()} px-3.5 py-2 text-[11px] tracking-[0.14em]`}
           >
-            Cart
-            {itemCount > 0 && (
-              <span
-                key={itemCount}
-                className="absolute -right-2 -top-2 flex h-5 min-w-5 animate-cart-pop items-center justify-center rounded-full bg-ember px-1 text-xs font-semibold text-cream"
-              >
-                {itemCount}
-              </span>
-            )}
+            Get a Quote
           </Link>
           <button
             type="button"
             aria-label="Toggle menu"
             aria-expanded={open}
-            className="text-cream"
             onClick={() => setOpen((v) => !v)}
           >
             <span className="block h-0.5 w-6 bg-cream" />
@@ -98,14 +78,14 @@ export function Header() {
       </div>
 
       {open && (
-        <nav className="border-t border-smoke/30 bg-charcoal px-4 py-4 md:hidden">
-          <ul className="flex flex-col gap-3">
+        <nav className="border-t border-gold/15 bg-ink px-4 py-5 lg:hidden">
+          <ul className="flex flex-col gap-4">
             {NAV.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`block text-sm uppercase tracking-[0.12em] ${
-                    pathname === item.href ? "text-ember" : "text-cream/80"
+                  className={`block font-display text-sm uppercase tracking-[0.18em] ${
+                    pathname === item.href ? "text-gold" : "text-cream/80"
                   }`}
                 >
                   {item.label}

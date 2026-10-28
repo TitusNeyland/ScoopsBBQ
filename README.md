@@ -1,16 +1,22 @@
 # Scoops BBQ
 
-Marketing + online ordering site for **Scoops BBQ** in Starkville, MS. Built with Next.js (React), TypeScript, Tailwind CSS, and Firebase/Firestore.
+Catering-first marketing site for **Scoop's BBQ & Catering** in Starkville, MS. Built with Next.js (React), TypeScript, Tailwind CSS, and Firebase/Firestore.
 
-Orders are pickup-only in v1 with **pay at pickup**. Catering inquiries are stored in Firestore for follow-up.
+Quote requests are stored in Firestore (`cateringInquiries`) for follow-up.
 
-## Features
+## Pages
 
-- Brand-first home page with Order / Catering CTAs
-- Menu with add-to-cart (local fallback menu until Firestore is seeded)
-- Cart + checkout → `orders` collection
-- Catering inquiry form → `cateringInquiries` collection
-- About & Contact pages with Starkville placeholders
+- **Home** — hero, intro, featured services, packages, work gallery, reviews, quote CTA
+- **Catering Services** (`/catering`) — corporate, weddings, university, church, private parties, VIP hospitality
+- **Menus & Packages** (`/menu`) — catering packages plus the everyday plates / by-the-pound menu
+- **Our Work** (`/our-work`) — Bulldog Bash, university events, catering jobs
+- **About** (`/about`)
+- **Request a Quote** (`/quote`) — date, location, guest count, budget, service type, menu preferences
+- **Contact & Reviews** (`/contact`) — contact info, testimonials, service areas
+
+## Content & photos
+
+Most copy lives in [`src/lib/site.ts`](src/lib/site.ts). Photo slots render a labeled placeholder until you add a `photo` path (relative to `/public`) to a service, package, or gallery item. Testimonials marked `placeholder: true` show a visible "sample review" label — replace them with real reviews before launch.
 
 ## Deploy to GitHub Pages
 
@@ -70,17 +76,16 @@ Set `FIREBASE_SERVICE_ACCOUNT_PATH` in `.env.local` if the key lives elsewhere.
 | Collection | Purpose |
 |---|---|
 | `menuItems` | Menu catalog (public read when `available == true`) |
-| `orders` | Customer pickup orders (public create only) |
-| `cateringInquiries` | Catering leads (public create only) |
+| `cateringInquiries` | Quote requests (public create only) |
 
 ## Swapping placeholders
 
-| Asset | Path |
+| Asset | Where |
 |---|---|
-| Hero background | `public/hero.svg` (or replace with `hero.jpg` and update `src/app/page.tsx`) |
-| Logo | `public/logo.svg` |
-| Menu images | `public/menu/*.svg` |
-| Phone / email / address / hours | Footer, Contact page |
+| Photos | Put files in `public/`, then set `photo` on items in `src/lib/site.ts` (hero/intro/about photos: the `<Photo>` calls in each page) |
+| Logo | `public/logo.png` |
+| Email, service areas, testimonials, package details | `src/lib/site.ts` |
+| Phone | `src/lib/types.ts` |
 
 ## Scripts
 

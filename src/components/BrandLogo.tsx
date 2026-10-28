@@ -4,7 +4,7 @@ import { withBasePath } from "@/lib/paths";
 type BrandLogoProps = {
   size?: "sm" | "md" | "lg" | "hero";
   className?: string;
-  priority?: boolean;
+  eager?: boolean;
 };
 
 const SIZES = {
@@ -18,14 +18,14 @@ const SIZES = {
   hero: {
     width: 360,
     height: 360,
-    className: "h-52 w-52 sm:h-64 sm:w-64 md:h-72 md:w-72",
+    className: "h-40 w-40 sm:h-52 sm:w-52",
   },
 } as const;
 
 export function BrandLogo({
   size = "md",
   className = "",
-  priority = false,
+  eager = false,
 }: BrandLogoProps) {
   const dims = SIZES[size];
 
@@ -35,7 +35,7 @@ export function BrandLogo({
       alt="Scoop's BBQ & Catering"
       width={dims.width}
       height={dims.height}
-      priority={priority}
+      loading={eager ? "eager" : "lazy"}
       className={`${dims.className} object-contain ${className}`.trim()}
     />
   );

@@ -1,83 +1,141 @@
 import type { Metadata } from "next";
-import { BrandLogo } from "@/components/BrandLogo";
+import { Photo } from "@/components/Photo";
+import { QuoteCta } from "@/components/QuoteCta";
+import { ButtonLink, PageHeader, SectionHeading } from "@/components/ui";
 import { MenuItemRow } from "@/components/menu/MenuItemRow";
 import { getMenuItems } from "@/lib/menu";
+import { PACKAGES } from "@/lib/site";
 import {
-  BUSINESS_PHONE_DISPLAY,
+  BUSINESS_PHONE,
   BUSINESS_PHONE_TEL,
   CATEGORY_LABELS,
   CATEGORY_ORDER,
-  type MenuCategory,
 } from "@/lib/types";
 
 export const metadata: Metadata = {
-  title: "Menu",
+  title: "Menus & Packages",
   description:
-    "Scoop's BBQ & Catering menu — plates, by the pound, fresh off the grill, and market cuts in Starkville, MS.",
+    "BBQ buffets, heavy hors d'oeuvres, Southern comfort food, premium selections, and custom catering menus from Scoop's BBQ & Catering.",
 };
 
 export default async function MenuPage() {
   const items = await getMenuItems();
-
   const grouped = CATEGORY_ORDER.map((category) => ({
     category,
     items: items.filter((item) => item.category === category),
   })).filter((group) => group.items.length > 0);
 
   return (
-    <div className="relative overflow-hidden bg-ink">
-      <div
-        className="pointer-events-none absolute bottom-0 right-0 h-64 w-64 opacity-40 sm:h-80 sm:w-80"
-        style={{
-          background:
-            "radial-gradient(circle at 70% 80%, rgba(232,90,42,0.55), transparent 60%)",
-        }}
-        aria-hidden
+    <>
+      <PageHeader
+        eyebrow="Menus & packages"
+        title="Built for your crowd"
+        intro="Choose a package as a starting point, then make it yours. Pricing depends on guest count, service style, and selections. Request a quote and we'll put it together."
       />
 
-      <div className="relative mx-auto max-w-2xl px-4 py-12 sm:px-6 sm:py-16">
-        <div className="flex flex-col items-center text-center">
-          <BrandLogo size="lg" priority />
-          <h1 className="mt-4 font-display text-5xl tracking-[0.12em] text-cream sm:text-6xl">
-            MENU
-          </h1>
-          <p className="mt-3 max-w-md text-sm text-cream/65">
-            Order online for pickup, or call / text{" "}
-            <a
-              href={`tel:${BUSINESS_PHONE_TEL}`}
-              className="text-ember hover:text-ember-hot"
-            >
-              {BUSINESS_PHONE_DISPLAY}
-            </a>
-            . Pay at pickup.
-          </p>
-        </div>
-
-        <div className="mt-12 space-y-10">
-          {grouped.map(({ category, items: groupItems }) => (
-            <section key={category} id={category}>
-              <h2 className="text-center font-display text-2xl tracking-[0.14em] text-ember sm:text-3xl">
-                {CATEGORY_LABELS[category as MenuCategory].toUpperCase()}
-              </h2>
-              <div className="mt-4 border-t border-ember/60">
-                {groupItems.map((item) => (
-                  <MenuItemRow key={item.id} item={item} />
-                ))}
-              </div>
-            </section>
+      <nav
+        aria-label="Packages"
+        className="sticky top-18 z-40 border-b border-gold/15 bg-ink/95 backdrop-blur"
+      >
+        <ul className="mx-auto flex max-w-6xl gap-6 overflow-x-auto px-4 py-3 sm:px-6">
+          {PACKAGES.map((pkg) => (
+            <li key={pkg.slug} className="shrink-0">
+              <a
+                href={`#${pkg.slug}`}
+                className="font-display text-xs uppercase tracking-[0.16em] text-cream/70 hover:text-gold"
+              >
+                {pkg.title}
+              </a>
+            </li>
           ))}
-        </div>
+          <li className="shrink-0">
+            <a
+              href="#everyday"
+              className="font-display text-xs uppercase tracking-[0.16em] text-cream/70 hover:text-gold"
+            >
+              Everyday Menu
+            </a>
+          </li>
+        </ul>
+      </nav>
 
-        <p className="mt-14 text-center font-display text-lg tracking-[0.16em] text-ember">
-          CALL OR TEXT
-        </p>
-        <a
-          href={`tel:${BUSINESS_PHONE_TEL}`}
-          className="mt-2 block text-center font-display text-3xl tracking-wide text-cream hover:text-ember"
-        >
-          662-694-0933
-        </a>
+      <div className="mx-auto grid max-w-6xl gap-6 px-4 py-20 sm:px-6 md:grid-cols-2">
+        {PACKAGES.map((pkg, i) => (
+          <article
+            key={pkg.slug}
+            id={pkg.slug}
+            className={`scroll-mt-36 border border-gold/20 bg-charcoal ${
+              i === PACKAGES.length - 1 ? "md:col-span-2 md:grid md:grid-cols-2" : ""
+            }`}
+          >
+            <div className="relative aspect-[16/9] md:aspect-auto md:min-h-56">
+              <Photo src={pkg.photo} alt={pkg.title} sizes="(min-width: 768px) 50vw, 100vw" />
+            </div>
+            <div className="p-7 sm:p-8">
+              <h2 className="font-display text-2xl uppercase tracking-[0.08em] text-cream">
+                {pkg.title}
+              </h2>
+              <p className="mt-2 text-cream/70">{pkg.blurb}</p>
+              <ul className="mt-5 space-y-2 text-sm text-cream/80">
+                {pkg.highlights.map((h) => (
+                  <li key={h} className="flex gap-3">
+                    <span className="mt-2 h-1 w-3 shrink-0 bg-gold" aria-hidden />
+                    {h}
+                  </li>
+                ))}
+              </ul>
+              <ButtonLink
+                href={`/quote?menu=${pkg.slug}`}
+                variant="outline"
+                className="mt-7"
+              >
+                Get pricing
+              </ButtonLink>
+            </div>
+          </article>
+        ))}
       </div>
-    </div>
+
+      <section id="everyday" className="scroll-mt-36 border-t border-gold/10 bg-charcoal">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+          <SectionHeading
+            eyebrow="Everyday menu"
+            title="Plates & by the pound"
+            intro={
+              <>
+                Feeding a smaller group? Our everyday menu is available for
+                pickup. Call or text{" "}
+                <a
+                  href={`tel:${BUSINESS_PHONE_TEL}`}
+                  className="text-gold hover:text-gold-hot"
+                >
+                  {BUSINESS_PHONE}
+                </a>{" "}
+                to order.
+              </>
+            }
+          />
+          <div className="mt-12 grid gap-x-16 gap-y-12 md:grid-cols-2">
+            {grouped.map(({ category, items: groupItems }) => (
+              <div key={category}>
+                <h3 className="font-display text-lg uppercase tracking-[0.2em] text-gold">
+                  {CATEGORY_LABELS[category]}
+                </h3>
+                <div className="mt-3 border-t border-gold/40">
+                  {groupItems.map((item) => (
+                    <MenuItemRow key={item.id} item={item} />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <QuoteCta
+        title="Have something else in mind?"
+        body="Custom menus are our specialty. Tell us about your event and we'll build a menu around it."
+      />
+    </>
   );
 }

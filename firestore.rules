@@ -5,40 +5,17 @@ service cloud.firestore {
       return value is string && value.size() > 0 && value.size() < 500;
     }
 
-    function isValidOrder() {
-      return request.resource.data.keys().hasAll([
-          'items',
-          'customer',
-          'notes',
-          'fulfillment',
-          'paymentStatus',
-          'status',
-          'total',
-          'createdAt'
-        ])
-        && request.resource.data.fulfillment == 'pickup'
-        && request.resource.data.paymentStatus == 'pay_at_pickup'
-        && request.resource.data.status == 'new'
-        && request.resource.data.total is number
-        && request.resource.data.total >= 0
-        && request.resource.data.items is list
-        && request.resource.data.items.size() > 0
-        && request.resource.data.items.size() < 50
-        && request.resource.data.customer.keys().hasAll(['name', 'phone', 'email'])
-        && isNonEmptyString(request.resource.data.customer.name)
-        && isNonEmptyString(request.resource.data.customer.phone)
-        && isNonEmptyString(request.resource.data.customer.email)
-        && request.resource.data.notes is string
-        && request.resource.data.notes.size() < 2000;
-    }
-
     function isValidCateringInquiry() {
       return request.resource.data.keys().hasAll([
           'name',
           'phone',
           'email',
           'eventDate',
+          'location',
           'guestCount',
+          'budget',
+          'serviceType',
+          'menuPreferences',
           'message',
           'status',
           'createdAt'
@@ -48,22 +25,21 @@ service cloud.firestore {
         && isNonEmptyString(request.resource.data.phone)
         && isNonEmptyString(request.resource.data.email)
         && isNonEmptyString(request.resource.data.eventDate)
+        && isNonEmptyString(request.resource.data.location)
+        && isNonEmptyString(request.resource.data.budget)
+        && isNonEmptyString(request.resource.data.serviceType)
+        && request.resource.data.menuPreferences is list
+        && request.resource.data.menuPreferences.size() <= 10
         && request.resource.data.guestCount is number
         && request.resource.data.guestCount > 0
         && request.resource.data.guestCount < 10000
         && request.resource.data.message is string
-        && request.resource.data.message.size() > 0
         && request.resource.data.message.size() < 5000;
     }
 
     match /menuItems/{itemId} {
       allow read: if resource.data.available == true;
       allow write: if false;
-    }
-
-    match /orders/{orderId} {
-      allow create: if isValidOrder();
-      allow read, update, delete: if false;
     }
 
     match /cateringInquiries/{inquiryId} {
