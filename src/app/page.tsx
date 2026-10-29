@@ -88,8 +88,8 @@ export default function HomePage() {
         <div className="grid grid-cols-2 gap-4">
           <div className="relative aspect-[3/4] border border-gold/15">
             <Photo
-              src="/photos/corporate-buffet.jpg"
-              alt="Buffet set for a corporate lunch"
+              src="/photos/wings-on-smoker.jpg"
+              alt="Racks of chicken wings on the smoker"
               sizes="(min-width: 1024px) 25vw, 50vw"
             />
           </div>

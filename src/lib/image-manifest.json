@@ -1,0 +1,162 @@
+{
+  "logo": {
+    "width": 737,
+    "height": 737,
+    "widths": [
+      96,
+      192,
+      384,
+      640,
+      737
+    ]
+  },
+  "photos/banana-pudding-peach-cobbler": {
+    "width": 1448,
+    "height": 1086,
+    "widths": [
+      96,
+      192,
+      384,
+      640,
+      960,
+      1280,
+      1448
+    ]
+  },
+  "photos/chicken-kabobs-pan": {
+    "width": 1086,
+    "height": 1448,
+    "widths": [
+      96,
+      192,
+      384,
+      640,
+      960,
+      1086
+    ]
+  },
+  "photos/chicken-kabobs-pit": {
+    "width": 1086,
+    "height": 1448,
+    "widths": [
+      96,
+      192,
+      384,
+      640,
+      960,
+      1086
+    ]
+  },
+  "photos/chicken-melt": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      96,
+      192,
+      384,
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "photos/corporate-buffet": {
+    "width": 1086,
+    "height": 1448,
+    "widths": [
+      96,
+      192,
+      384,
+      640,
+      960,
+      1086
+    ]
+  },
+  "photos/garden-reception-buffet": {
+    "width": 1448,
+    "height": 1086,
+    "widths": [
+      96,
+      192,
+      384,
+      640,
+      960,
+      1280,
+      1448
+    ]
+  },
+  "photos/owner-portrait": {
+    "width": 571,
+    "height": 800,
+    "widths": [
+      96,
+      192,
+      384,
+      571
+    ]
+  },
+  "photos/smoked-wings-pan": {
+    "width": 1631,
+    "height": 964,
+    "widths": [
+      96,
+      192,
+      384,
+      640,
+      960,
+      1280,
+      1600,
+      1631
+    ]
+  },
+  "photos/spinach-dip": {
+    "width": 1086,
+    "height": 1448,
+    "widths": [
+      96,
+      192,
+      384,
+      640,
+      960,
+      1086
+    ]
+  },
+  "photos/turkey-chicken-platter": {
+    "width": 1448,
+    "height": 1086,
+    "widths": [
+      96,
+      192,
+      384,
+      640,
+      960,
+      1280,
+      1448
+    ]
+  },
+  "photos/whole-roasted-pig": {
+    "width": 1448,
+    "height": 1086,
+    "widths": [
+      96,
+      192,
+      384,
+      640,
+      960,
+      1280,
+      1448
+    ]
+  },
+  "photos/wings-on-smoker": {
+    "width": 1122,
+    "height": 1402,
+    "widths": [
+      96,
+      192,
+      384,
+      640,
+      960,
+      1122
+    ]
+  }
+}

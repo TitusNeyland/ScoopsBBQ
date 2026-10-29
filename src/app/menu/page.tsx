@@ -100,23 +100,32 @@ export default async function MenuPage() {
 
       <section id="everyday" className="scroll-mt-36 border-t border-gold/10 bg-charcoal">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-          <SectionHeading
-            eyebrow="Everyday menu"
-            title="Plates & by the pound"
-            intro={
-              <>
-                Feeding a smaller group? Our everyday menu is available for
-                pickup. Call or text{" "}
-                <a
-                  href={`tel:${BUSINESS_PHONE_TEL}`}
-                  className="text-gold hover:text-gold-hot"
-                >
-                  {BUSINESS_PHONE}
-                </a>{" "}
-                to order.
-              </>
-            }
-          />
+          <div className="grid gap-10 md:grid-cols-[1fr_28rem] md:items-end">
+            <SectionHeading
+              eyebrow="Everyday menu"
+              title="Plates & by the pound"
+              intro={
+                <>
+                  Feeding a smaller group? Our everyday menu is available for
+                  pickup. Call or text{" "}
+                  <a
+                    href={`tel:${BUSINESS_PHONE_TEL}`}
+                    className="text-gold hover:text-gold-hot"
+                  >
+                    {BUSINESS_PHONE}
+                  </a>{" "}
+                  to order.
+                </>
+              }
+            />
+            <div className="relative aspect-[3/2] w-full border border-gold/15">
+              <Photo
+                src="/photos/chicken-melt.jpg"
+                alt="Grilled chicken melt on toasted bread"
+                sizes="(min-width: 768px) 28rem, 100vw"
+              />
+            </div>
+          </div>
           <div className="mt-12 grid gap-x-16 gap-y-12 md:grid-cols-2">
             {grouped.map(({ category, items: groupItems }) => (
               <div key={category}>

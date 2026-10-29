@@ -33,7 +33,7 @@ export const SERVICES: Service[] = [
     slug: "corporate",
     title: "Corporate Events",
     blurb: "Lunches, meetings, and company gatherings served on schedule.",
-    photo: "/photos/corporate-events.jpg",
+    photo: "/photos/turkey-chicken-platter.jpg",
     details:
       "From boxed lunches for a morning meeting to a full buffet for the whole company, we show up on time, set up clean, and keep the line moving so your team can get back to business.",
   },
@@ -89,7 +89,7 @@ export const PACKAGES: Package[] = [
     slug: "hors-doeuvres",
     title: "Heavy Hors d'Oeuvres",
     blurb: "Passed or stationed bites for receptions and mixers.",
-    photo: "/photos/spinach-dip.jpg",
+    photo: "/photos/smoked-wings-pan.jpg",
     highlights: [
       "Grilled chicken kabobs",
       "Spinach dip with tortilla chips",
@@ -161,6 +161,21 @@ export const WORK: WorkItem[] = [
     title: "Banana pudding and peach cobbler",
     category: "Catering Jobs",
     photo: "/photos/banana-pudding-peach-cobbler.jpg",
+  },
+  {
+    title: "Smoked turkey and chicken platter",
+    category: "Catering Jobs",
+    photo: "/photos/turkey-chicken-platter.jpg",
+  },
+  {
+    title: "Wings on the smoker",
+    category: "Catering Jobs",
+    photo: "/photos/wings-on-smoker.jpg",
+  },
+  {
+    title: "Smoked wings by the pan",
+    category: "Catering Jobs",
+    photo: "/photos/smoked-wings-pan.jpg",
   },
   {
     title: "Corporate lunch buffet",

@@ -16,7 +16,9 @@ Quote requests are stored in Firestore (`cateringInquiries`) for follow-up.
 
 ## Content & photos
 
-Most copy lives in [`src/lib/site.ts`](src/lib/site.ts). Photo slots render a labeled placeholder until you add a `photo` path (relative to `/public`) to a service, package, or gallery item. Testimonials marked `placeholder: true` show a visible "sample review" label — replace them with real reviews before launch.
+Most copy lives in [`src/lib/site.ts`](src/lib/site.ts). Photo slots render a labeled placeholder until you add a `photo` path to a service, package, or gallery item.
+
+**Adding photos:** put the full-resolution original in `images/photos/` and reference it as `/photos/<name>.jpg`. Before every `dev` and `build`, [`scripts/optimize-images.mjs`](scripts/optimize-images.mjs) generates WebP versions at several widths into `public/img/` (gitignored), and a custom `next/image` loader serves each device the smallest size it needs. Larger originals mean sharper photos on big screens; nothing is ever upscaled. Testimonials marked `placeholder: true` show a visible "sample review" label — replace them with real reviews before launch.
 
 ## Deploy to GitHub Pages
 
@@ -82,8 +84,8 @@ Set `FIREBASE_SERVICE_ACCOUNT_PATH` in `.env.local` if the key lives elsewhere.
 
 | Asset | Where |
 |---|---|
-| Photos | Put files in `public/`, then set `photo` on items in `src/lib/site.ts` (hero/intro/about photos: the `<Photo>` calls in each page) |
-| Logo | `public/logo.png` |
+| Photos | Put originals in `images/photos/`, then set `photo` on items in `src/lib/site.ts` (hero/intro/about photos: the `<Photo>` calls in each page) |
+| Logo | `images/logo.png` (tab icon: `src/app/icon.png`) |
 | Email, service areas, testimonials, package details | `src/lib/site.ts` |
 | Phone | `src/lib/types.ts` |
 

@@ -1,8 +1,7 @@
 import Image from "next/image";
-import { withBasePath } from "@/lib/paths";
 
 type PhotoProps = {
-  /** Path under /public. Omit to show a labeled placeholder. */
+  /** e.g. "/photos/x.jpg" for images/photos/x.jpg. Omit to show a labeled placeholder. */
   src?: string;
   alt: string;
   className?: string;
@@ -26,7 +25,7 @@ export function Photo({
       <>
         <div className="photo-placeholder absolute inset-0" aria-hidden />
         <Image
-          src={withBasePath(src)}
+          src={src}
           alt={alt}
           fill
           sizes={sizes}
